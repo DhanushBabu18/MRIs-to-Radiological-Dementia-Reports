@@ -1,0 +1,15 @@
+In our study, we tested various LLMs in our proposed framework. Namely:
+
+Generic LLMs
+- MISTRAL AI 7B (Version 3 and 1)
+- QWEN3-14B
+- Gemma 7B
+- LLAMA 3 - 70B 4bit quantized
+
+Medically fine-tuned LLMs
+- BIO MISTRAL AI 7B
+- MED-ALPACA 13B
+- PMC-LLAMA-13B
+- MEDITRON 7B
+- Meditron LLM 7B Radiology
+
