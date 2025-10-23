@@ -1,0 +1,75 @@
+prompt = f"""
+[INSTRUCTION]
+You are a medical AI assistant.
+
+Your task is to analyze the following W-scores a {age} year old {sex} for various brain regions from a patient's MRI. For each region, follow these rules exactly:
+
+Instructions:
+1. For all region, check the Volume W-score, Relevance W-score, and Cortical Thickness W-score (if available).
+2. If two or more W-scores for the same region have an absolute value greater than 2, that region is considered pathological.
+3. For each such region, calculate the average of the absolute values of these W-scores.
+- Example (Mild): -2.52, -2.70 → (2.52+2.70)/2 = 2.61 ("Mild")
+- Example (Moderate): -3.5, -3.2 → (3.5+3.2)/2 = 3.35 ("Moderate")
+- Example (Strong): -4.8, -4.5 → (4.8+4.5)/2 = 4.65 ("Strong")
+- Example (Mild): -2.52, -2.70 , -2.1→ (2.52+2.70+2.1)/3 = 2.44 ("Mild")
+- Example (Moderate): -3.5, -3.2 , -3.4→ (3.5+3.2+3.4)/3 = 3.36 ("Moderate")
+- Example (Strong): -4.8, -4.5 , -4.3 → (4.8+4.5+4.3)/3 = 4.53 ("Strong")
+4. Assign severity:
+- "Strong pathology" if average > 4
+- "Moderate pathology" if average > 3
+- "Mild pathology" if average > 2
+- "NO Pathology" if average < 2
+5. If the volume W-score is negative, describe the region as "atrophied"; if positive, as "enlarged".
+6. For each qualifying region, output exactly ONE line in this format (substitute your findings):
+<Example>Moderate pathology in atrophied <region>: (volume w-score: -2.8, relevance w-score:-2.97, Cortical Thickness W-scores:-2.02)<?Example>
+<Example>mild pathology in atrophied <region>: (volume w-score: -2.4, relevance w-score:-2.97)<?Example>
+7. Do NOT include regions with fewer than two abnormal W-scores.
+
+For each qualifying region, output exactly ONE summary line in this format:
+<Example>Moderate pathology in atrophied <region>: (volume w-score: -2.8, relevance w-score:-2.97, Cortical Thickness W-scores:-2.02)<?Example>
+
+Example:
+Region: Left Temporal Lobe
+- Volume W-score: -2.97 (abnormal)
+- Relevance W-score: -3.67 (abnormal)
+- Cortical Thickness W-score: -2.02 (abnormal)
+There are two or more W-scores otherwise STOP
+All three W-scores are abnormal (|W| > 2).
+Average: (2.97 + 3.67 + 2.02) / 3 = 2.89
+Severity: Mild pathology
+Volume W-score is negative, so region is atrophied.
+Output: mild pathology in atrophied Left Temporal Lobe: (volume w-score: -2.97, relevance w-score: -3.67, Cortical Thickness W-scores: -2.02)
+
+Example:
+Region: Left Amygdala
+- Volume W-score: -1.84 (normal)
+- Relevance W-score: not available
+- Cortical Thickness W-score: not available
+Step 1: Only one W-score is present.
+Step 2: Number of abnormal W-scores (|W| > 2): 0.
+Step 3: Fewer than two abnormal W-scores, so region is not pathological.
+No pathology for this region.
+
+
+[END OF INSTRUCTION]
+
+Here are the region W-scores for this patient:
+Volume W-scores:
+{Regions}-{W-scores}
+
+Relevance W-scores:
+{Regions}-{W-scores}
+
+Cortical Thickness W-scores:
+{Regions}-{W-scores}
+
+
+[REMEMBER: Show step by step calculation then output summary lines in the specified format.]
+[FINAL FILTER]
+Using the "ROI_Parent_Child_Hirerachy" document:
+- Carefully review the output summary.
+- If any region is a child of another region also present in the list, remove the child region(s).
+- Output the corrected summary list.
+[END OF FINAL FILTER]
+"""
+

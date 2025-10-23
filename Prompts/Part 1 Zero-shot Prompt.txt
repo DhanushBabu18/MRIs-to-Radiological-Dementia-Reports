@@ -1,0 +1,29 @@
+prompt=f"""A {age}-year-old {sex} patient underwent structural MRI.
+Here are the W-scores for selected brain regions:
+
+Volumetry W-scores:
+{Regions}-{W-scores}
+
+Relevance W-scores:
+{Regions}-{W-scores}
+
+Cortical Thickness W-scores:
+{Regions}-{W-scores}
+
+Instructions:
+1. For each region, check the Volume W-score, Relevance W-score, and Cortical Thickness W-score (if available).
+2. Consider a region pathological ONLY if at least two W-scores for that region have an absolute value > 2.
+   For such regions, calculate the average of the absolute values of those W-scores.
+   Severity: 'Mild' if average > 2, 'Moderate' if > 3, 'Strong' if > 4.
+   Use 'atrophied' if the volume W-score is negative; 'enlarged' if the volume W-score is positive.
+   Important: When deciding which regions to summarize, consult the file titled 'ROI_Parent_Child_Hirerachy.pdf' in the document database.
+   DO NOT include child regions if their parent region is already listed as pathological according to that file.
+
+[IMPORTANT] OUTPUT TEMPLATE:
+<severity> pathology in <atrophied|enlarged> <region> (volume w-score: <v>, relevance w-score: <r>{, cortical thickness w-score: <ct>})
+
+Output one line per region. If there are NO pathologic regions, write: 'No regions show significant pathology.'
+Do NOT provide any diagnosis or extra commentary—just the list.
+[REMEMBER] There must be two or more W-scores whose absolute value is greater than 2 for a region to be reported.
+
+"""
