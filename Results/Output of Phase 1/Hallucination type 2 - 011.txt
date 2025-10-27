@@ -1,0 +1,2 @@
+Moderate pathology in atrophied Left Amygdala: (volume w-score: -3.39, relevance w-score: -2.96, cortical thickness w-score: not available)
+Moderate pathology in atrophied Left Hippocampus: (volume w-score: -5.32, relevance w-score: -2.55, cortical thickness w-score: not available)

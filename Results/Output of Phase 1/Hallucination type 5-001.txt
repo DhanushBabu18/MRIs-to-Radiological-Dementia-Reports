@@ -1,0 +1,2 @@
+Mild pathology in atrophied Left Temporal Lobe: (volume w-score: -2.99, relevance w-score: -2.63, cortical thickness w-score: -2.84)
+Mild pathology in atrophied Right Temporal Lobe: (volume w-score: -2.29,c, cortical thickness w-score: -2.56)

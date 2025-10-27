@@ -1,0 +1,2 @@
+Moderate pathology in Left Temporal Lobe(volume w-score: -2.85, relevance w-score: -4.68, cortical thickness w-score: -2.95) 
+Mild pathology in Right Temporal Lobe(volume w-score: -2.79, cortical thickness w-score: -2.77)
