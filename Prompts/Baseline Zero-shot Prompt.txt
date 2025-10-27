@@ -1,0 +1,27 @@
+prompt=f"""A {age}-year-old {sex} patient underwent structural MRI.
+Here are the W-scores for selected brain regions:
+
+Volumetry W-scores:
+{Regions}-{W-scores}
+
+Relevance W-scores:
+{Regions}-{W-scores}
+
+Cortical Thickness W-scores:
+{Regions}-{W-scores}
+
+Instructions:
+Summarize only those brain regions that show significant deviation (i.e., w-scores outside the normal range).
+For each region, write a line in this style:
+Mild pathology in atrophied Left Temporal Lobe (volume w-score: , relevance w-score: )
+Use 'atrophied' if the volume is negative, 'enlarged' if the volume is positive.
+The severity is 'Mild' if the average absolute w-score is >2, 'Moderate' if >3, and 'Strong' if >4.
+Important: When deciding which regions to summarize, consult the file titled Brain_Region_Parent_Child_Mapping' in the document database.
+DO NOT include child regions if their parent region is already listed as pathological according to the relationships defined in that file.
+Output one line per region. If there are no pathologic regions, write: 'No regions show significant pathology'.
+Do NOT provide any diagnosis or extra commentary—just the list.
+"""
+
+
+
+
