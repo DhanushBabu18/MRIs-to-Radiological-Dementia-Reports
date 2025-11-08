@@ -20,7 +20,7 @@ Instructions:
    DO NOT include child regions if their parent region is already listed as pathological according to that file.
 
 [IMPORTANT] OUTPUT TEMPLATE:
-<severity> pathology in <atrophied|enlarged> <region> (volume w-score: <v>, relevance w-score: <r>{, cortical thickness w-score: <ct>})
+<severity> pathology in <atrophied|enlarged> <region> (volume w-score: <v>, relevance w-score: <r>, cortical thickness w-score: <ct>)
 
 Output one line per region. If there are NO pathologic regions, write: 'No regions show significant pathology.'
 Do NOT provide any diagnosis or extra commentary—just the list.
